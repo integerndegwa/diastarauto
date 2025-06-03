@@ -5,160 +5,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diastar Auto Care Centre Ltd</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f2f5; /* Light gray background */
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* Subtle background pattern for the whole body */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 18v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 14v-4H10v4H6v2h4v4h2v-4h4v-2h-4zm0 18v-4H10v4H6v2h4v4h2v-4h4v-2h-4zM12 0v-4H10v4H6v2h4v4h2V6h4V4h-4zm24 0v-4h-2v4h-4v2h4v4h2V6h4V4h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            z-index: -1; /* Send to back */
+            animation: backgroundPan 60s linear infinite; /* Slow, continuous pan */
+        }
+
+        @keyframes backgroundPan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
         /* Keyframe Animations */
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0px rgba(49, 130, 206, 0.7); }
+            50% { box-shadow: 0 0 15px rgba(49, 130, 206, 0.9); }
+            100% { box-shadow: 0 0 0px rgba(49, 130, 206, 0.7); }
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Stronger shadow */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        nav a {
+            position: relative;
+            transition: color 0.3s ease, transform 0.2s ease;
+            font-weight: 600; /* Slightly bolder nav links */
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3182ce;
+            transition: width 0.3s ease-out;
+            border-radius: 2px;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section Styling */
         .hero-section {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); /* Dark gradient */
+            background: radial-gradient(circle at top left, #1a202c 0%, #2d3748 70%); /* Dynamic radial gradient */
             color: white;
             padding: 4rem 1rem;
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding-top: 6rem; /* Adjust padding to account for fixed header */
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* Stronger shadow */
+            padding-top: 8rem; /* More padding for fixed header */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4); /* Even stronger shadow */
         }
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 18v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 14v-4H10v4H6v2h4v4h2v-4h4v-2h-4zm0 18v-4H10v4H6v2h4v4h2v-4h4v-2h-4zM12 0v-4H10v4H6v2h4v4h2V6h4V4h-4zm24 0v-4h-2v4h-4v2h4v4h2V6h4V4h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-            opacity: 0.1;
-            z-index: 1;
-        }
-        .hero-section > div {
-            position: relative;
-            z-index: 2;
-        }
-
         .hero-section h1 {
-            animation: fadeInDown 1s ease-out forwards;
+            font-size: 4.5rem; /* Larger heading */
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Text shadow for depth */
+            animation: fadeInDown 1.2s ease-out forwards;
         }
         .hero-section p {
-            animation: fadeInUp 1s ease-out forwards 0.3s; /* Delayed animation */
-            opacity: 0; /* Start hidden */
+            font-size: 2.2rem; /* Larger subheading */
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            animation: fadeInUp 1.2s ease-out forwards 0.3s;
+            opacity: 0;
         }
         .hero-section a.inline-block {
-            animation: fadeInUp 1s ease-out forwards 0.6s; /* Further delayed animation */
-            opacity: 0; /* Start hidden */
-            background-color: #3182ce; /* Blue button */
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(49, 130, 206, 0.4);
+            animation: fadeInUp 1.2s ease-out forwards 0.6s, pulseGlow 2s infinite 1.5s; /* Pulse glow added */
+            opacity: 0;
+            background: linear-gradient(45deg, #3182ce, #4299e1); /* Gradient button */
+            box-shadow: 0 8px 25px rgba(49, 130, 206, 0.6); /* Stronger glow shadow */
+            font-weight: 700; /* Bolder button text */
         }
         .hero-section a.inline-block:hover {
-            background-color: #2c5282; /* Darker blue on hover */
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.6);
+            background: linear-gradient(45deg, #2c5282, #3182ce); /* Darker gradient on hover */
+            transform: translateY(-5px) scale(1.05); /* More pronounced lift */
+            box-shadow: 0 12px 30px rgba(49, 130, 206, 0.8);
         }
 
         .hero-image-placeholder {
-            background-color: #4299e1; /* Brighter blue for placeholder */
-            color: white;
+            background-color: #4299e1;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 300px; /* Fixed height for visual consistency */
+            height: 350px; /* Taller hero image */
             width: 100%;
-            max-width: 800px;
-            margin: 2rem auto;
-            border-radius: 1.5rem; /* More rounded */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Stronger shadow */
-            font-size: 1.8rem; /* Larger font */
-            font-weight: 700; /* Bolder font */
-            text-transform: uppercase;
-            letter-spacing: 3px; /* More spacing */
-            overflow: hidden; /* Ensure content stays within bounds */
+            max-width: 900px; /* Wider */
+            margin: 2.5rem auto; /* More margin */
+            border-radius: 2rem; /* Even more rounded */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4); /* Very strong shadow */
+            overflow: hidden;
             position: relative;
-            animation: fadeIn 1.5s ease-out forwards 0.9s; /* Delayed fade in */
-            opacity: 0; /* Start hidden */
+            animation: fadeIn 1.8s ease-out forwards 0.9s;
+            opacity: 0;
+            border: 5px solid rgba(255,255,255,0.2); /* Subtle white border */
         }
-        /* Removed ::before pseudo-element as it's no longer needed for image placeholder text */
-
         .hero-image-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-            border-radius: 1.5rem; /* Match parent border-radius */
+            object-fit: cover;
+            border-radius: 2rem;
         }
 
         /* Section Heading Styling */
         .section-heading {
-            font-size: 2.8rem; /* Larger heading */
-            font-weight: 800; /* Extra bold */
-            color: #2d3748; /* Darker gray for headings */
-            margin-bottom: 2.5rem; /* More space below heading */
-            text-align: center;
-            position: relative;
-            padding-bottom: 0.75rem; /* More padding for underline */
+            font-size: 3.2rem; /* Even larger heading */
+            font-weight: 900; /* Black font weight */
+            color: #2d3748;
+            margin-bottom: 3rem; /* More space below heading */
+            padding-bottom: 1rem; /* More padding for underline */
             animation: fadeIn 1s ease-out forwards;
             opacity: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         .section-heading::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%) scaleX(0); /* Start scaled to 0 */
-            width: 100px; /* Wider underline */
-            height: 5px; /* Thicker underline */
-            background-color: #3182ce; /* Blue accent */
-            border-radius: 3px;
-            transition: transform 0.5s ease-out; /* Animation for underline */
+            width: 120px; /* Even wider underline */
+            height: 6px; /* Thicker underline */
+            background: linear-gradient(90deg, #3182ce, #4299e1); /* Gradient underline */
+            box-shadow: 0 2px 8px rgba(49, 130, 206, 0.4);
         }
         .section-heading:hover::after {
-            transform: translateX(-50%) scaleX(1); /* Scale to full width on hover */
+            transform: translateX(-50%) scaleX(1.1); /* Slightly overshoot on hover */
         }
 
         /* Card Styling */
         .card {
-            background-color: white;
-            border-radius: 1.5rem; /* More rounded */
-            box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* Stronger initial shadow */
-            padding: 2.5rem; /* More padding */
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            position: relative;
+            background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%); /* Subtle gradient background */
+            border-radius: 2rem; /* Even more rounded */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.18); /* Stronger initial shadow */
+            padding: 3rem; /* More padding */
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.2), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.2); /* Bouncier transition */
+            border: none; /* Remove subtle border */
             overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05); /* Subtle border */
+            position: relative;
+            z-index: 1;
         }
         .card::before {
             content: '';
@@ -166,89 +185,181 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #3182ce, #4299e1); /* Gradient top border */
+            height: 8px; /* Thicker top border */
+            background: linear-gradient(90deg, #3182ce, #4299e1);
             transform: translateY(-100%);
-            transition: transform 0.3s ease-out;
+            transition: transform 0.4s ease-out;
+            z-index: 2;
         }
         .card:hover::before {
             transform: translateY(0);
         }
         .card:hover {
-            transform: translateY(-8px) scale(1.01); /* More pronounced lift and slight scale */
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25); /* Much stronger shadow on hover */
+            transform: translateY(-12px) scale(1.02); /* More pronounced lift and scale */
+            box-shadow: 0 20px 45px rgba(0,0,0,0.35); /* Much stronger shadow on hover */
+            z-index: 2; /* Bring to front on hover */
+        }
+        .card svg {
+            transition: transform 0.3s ease-out, color 0.3s ease;
+        }
+        .card:hover svg {
+            transform: scale(1.1) rotate(5deg); /* Icon animation on hover */
+            color: #2c5282; /* Darker blue icon on hover */
         }
 
         /* Contact Info Styling */
         .contact-info p {
-            display: flex;
-            align-items: center;
-            gap: 1rem; /* More space for icons */
-            margin-bottom: 1.25rem; /* More space between lines */
-            font-size: 1.25rem; /* Larger font */
-            color: #4a5568;
-            transition: color 0.3s ease;
+            gap: 1.25rem; /* More space for icons */
+            margin-bottom: 1.5rem; /* More space between lines */
+            font-size: 1.35rem; /* Even larger font */
+            color: #3a475a; /* Slightly darker text */
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 0.75rem 0; /* Add padding for hover effect */
+            border-radius: 0.75rem;
         }
         .contact-info p:hover {
-            color: #2d3748; /* Darken text on hover */
+            color: #1a202c; /* Darken text on hover */
+            background-color: #e2e8f0; /* Subtle background highlight on hover */
         }
         .contact-info svg {
-            color: #3182ce; /* Blue accent for icons */
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
+            color: #3182ce;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.2); /* Bouncier icon transition */
         }
         .contact-info p:hover svg {
-            transform: translateX(-5px); /* Slide icon left on hover */
+            transform: translateX(-8px) rotate(-5deg); /* More pronounced slide and rotation */
         }
         .contact-info a {
-            font-weight: 500;
+            font-weight: 600; /* Bolder links */
         }
 
         /* Footer Styling */
         .footer {
-            background-color: #2d3748; /* Dark gray */
-            color: #cbd5e0; /* Lighter text for contrast */
-            padding: 2.5rem 1rem; /* More padding */
-            text-align: center;
-            font-size: 0.95rem;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+            background: linear-gradient(90deg, #2d3748 0%, #1a202c 100%); /* Darker gradient footer */
+            color: #e2e8f0; /* Lighter text for contrast */
+            padding: 3rem 1rem; /* More padding */
+            font-size: 1rem;
+            box-shadow: 0 -8px 20px rgba(0,0,0,0.3);
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
         }
 
-        /* Custom styles for hamburger menu */
+        /* Mobile Menu */
         .mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother transition */
+            background-color: rgba(255, 255, 255, 0.98); /* Almost opaque white */
+            backdrop-filter: blur(10px); /* Stronger blur */
+            box-shadow: -10px 0 30px rgba(0,0,0,0.25); /* Stronger shadow */
         }
-        .mobile-menu.hidden {
-            transform: translateX(100%);
+        .mobile-menu a {
+            font-weight: 700; /* Bolder mobile links */
+            padding: 0.75rem 1rem; /* More padding */
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        .mobile-menu.block {
-            transform: translateX(0);
+        .mobile-menu a:hover {
+            background-color: #eff6ff; /* Light blue background on hover */
+            color: #3182ce;
         }
 
-        /* Navigation Bar Styling */
-        nav {
-            background-color: #ffffff; /* White background */
-            border-bottom: 1px solid #e2e8f0; /* Subtle bottom border */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Lighter shadow */
+        /* Slideshow specific styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 950px; /* Slightly wider slideshow */
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 2rem; /* More rounded */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25); /* Stronger shadow */
+            background-color: #fff;
+            border: 8px solid #ffffff; /* White frame effect */
+            box-sizing: content-box; /* Ensure padding/border doesn't add to width */
         }
-        nav a {
-            transition: color 0.3s ease, transform 0.2s ease;
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 500px; /* Taller slides */
+            object-fit: cover;
+            animation: fadeIn 1s ease-in-out forwards; /* Fade in animation for slides */
         }
-        nav a:hover {
-            transform: translateY(-2px);
+
+        .mySlides.active {
+            display: block;
+        }
+
+        .prev, .next {
+            font-size: 28px; /* Larger arrows */
+            padding: 20px; /* More padding */
+            background-color: rgba(0,0,0,0.6); /* Darker background */
+            border-radius: 0.75rem; /* Rounded buttons */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            top: 50%;
+            transform: translateY(-50%); /* Center vertically */
+            display: flex; /* Use flex for centering arrow icon */
+            align-items: center;
+            justify-content: center;
+            width: 50px; /* Fixed width for buttons */
+            height: 50px; /* Fixed height for buttons */
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.9); /* Even darker on hover */
+            transform: translateY(-50%) scale(1.1); /* Slight scale on hover */
+        }
+        .prev { left: 1rem; }
+        .next { right: 1rem; }
+
+        .dot-container {
+            padding: 25px; /* More padding */
+            background-color: #e2e8f0; /* Slightly darker dot container */
+            border-bottom-left-radius: 2rem; /* Match slideshow container */
+            border-bottom-right-radius: 2rem;
+            box-shadow: inset 0 5px 15px rgba(0,0,0,0.05); /* Inner shadow */
+        }
+
+        .dot {
+            height: 18px; /* Larger dots */
+            width: 18px;
+            background-color: #a0aec0; /* Darker gray dots */
+            transition: background-color 0.4s ease, transform 0.3s ease;
+        }
+
+        .active-dot, .dot:hover {
+            background-color: #3182ce; /* Blue active/hover dot */
+            transform: scale(1.2); /* Larger on active/hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 3.5rem;
+            }
+            .hero-section p {
+                font-size: 1.5rem;
+            }
+            .section-heading {
+                font-size: 2.2rem;
+            }
+            .mySlides {
+                height: 300px; /* Adjust height for smaller screens */
+            }
+            .prev, .next {
+                font-size: 20px;
+                padding: 12px;
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+    <nav class="fixed top-0 left-0 w-full z-50" id="main-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-gray-800 hover:text-blue-600 transition duration-300">Diastar Auto Care</a>
 
             <div class="hidden lg:flex space-x-8">
-                <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">About Us</a>
-                <a href="#services" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Our Services</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Contact Us</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-600">About Us</a>
+                <a href="#services" class="text-gray-600 hover:text-blue-600">Our Services</a>
+                <a href="#slideshow" class="text-gray-600 hover:text-blue-600">Gallery</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact Us</a>
             </div>
 
             <button id="hamburger-button" class="lg:hidden focus:outline-none p-2 rounded-md hover:bg-gray-100 transition duration-300">
@@ -258,36 +369,37 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="mobile-menu hidden lg:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 pt-20 z-40 flex flex-col items-start space-y-6">
-            <button id="close-mobile-menu" class="absolute top-4 right-4 focus:outline-none p-2 rounded-md hover:bg-gray-100 transition duration-300">
+        <div id="mobile-menu" class="mobile-menu hidden lg:hidden fixed top-0 right-0 h-full w-64 p-6 pt-20 z-40 flex flex-col items-start space-y-6">
+            <button id="close-mobile-menu" class="absolute top-4 right-4 focus:outline-none p-2 rounded-md hover:bg-gray-200 transition duration-300">
                 <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <a href="#about" class="text-gray-800 hover:text-blue-600 text-xl font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden');">About Us</a>
-            <a href="#services" class="text-gray-800 hover:text-blue-600 text-xl font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Our Services</a>
-            <a href="#contact" class="text-gray-800 hover:text-blue-600 text-xl font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Contact Us</a>
+            <a href="#about" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">About Us</a>
+            <a href="#services" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Our Services</a>
+            <a href="#slideshow" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Gallery</a>
+            <a href="#contact" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Contact Us</a>
         </div>
     </nav>
 
     <section id="hero" class="hero-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-6">
+            <h1 class="font-extrabold leading-tight mb-6">
                 Diastar Auto Care Centre Ltd
             </h1>
-            <p class="text-xl sm:text-2xl font-light mb-12">
+            <p class="font-light mb-12">
                 Your Trusted Partner for Premier Auto Care in Nairobi
             </p>
             <div class="hero-image-placeholder">
-                <img src="diastar.jpg" alt="Diastar Auto Care Hero Image" onerror="this.src='https://placehold.co/800x300/4299e1/ffffff?text=Image+Not+Found';">
+                <img src="diastar.jpeg" alt="Diastar Auto Care Hero Image" onerror="this.src='https://placehold.co/900x350/4299e1/ffffff?text=Image+Not+Found';">
             </div>
-            <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+            <a href="#contact" class="inline-block text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transition duration-300 ease-in-out transform">
                 Get in Touch Today
             </a>
         </div>
     </section>
 
-    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-heading">About Us</h2>
             <div class="card p-8 text-center max-w-4xl mx-auto">
@@ -298,92 +410,114 @@
         </div>
     </section>
 
-    <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-heading">Our Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <div class="card text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6 text-blue-500">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                         <line x1="12" y1="18" x2="12" y2="12"></line>
                         <line x1="9" y1="15" x2="15" y2="15"></line>
                     </svg>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Engine Diagnostics & Repair</h3>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Engine Diagnostics & Repair</h3>
                     <p class="text-gray-600">Expert diagnosis and repair for all engine-related issues, ensuring optimal performance.</p>
                 </div>
 
                 <div class="card text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6 text-blue-500">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="12" y1="8" x2="12" y2="16"></line>
                         <line x1="8" y1="12" x2="16" y2="12"></line>
                     </svg>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Brake System Maintenance</h3>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Brake System Maintenance</h3>
                     <p class="text-gray-600">Comprehensive brake inspections, repairs, and replacements for your safety.</p>
                 </div>
 
                 <div class="card text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6 text-blue-500">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         <line x1="12" y1="10" x2="12" y2="16"></line>
                         <line x1="9" y1="13" x2="15" y2="13"></line>
                     </svg>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Oil Change & Fluid Checks</h3>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Oil Change & Fluid Checks</h3>
                     <p class="text-gray-600">Regular oil changes and fluid top-ups to keep your engine running efficiently.</p>
                 </div>
 
                 <div class="card text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6 text-blue-500">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M16 12H8"></path>
                         <path d="M12 8v8"></path>
                     </svg>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Suspension & Steering Repair</h3>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Suspension & Steering Repair</h3>
                     <p class="text-gray-600">Addressing issues with your vehicle's suspension and steering for a smooth ride.</p>
                 </div>
 
                 <div class="card text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6 text-blue-500">
                         <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path>
                         <path d="M12 6v6l4 2"></path>
                     </svg>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">AC & Heating Services</h3>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">AC & Heating Services</h3>
                     <p class="text-gray-600">Maintenance and repair of your vehicle's air conditioning and heating systems.</p>
                 </div>
 
                 <div class="card text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6 text-blue-500">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M12 16v-4"></path>
                         <path d="M12 8h.01"></path>
                     </svg>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Tire Services & Alignment</h3>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Tire Services & Alignment</h3>
                     <p class="text-gray-600">Tire rotation, balancing, repair, and wheel alignment for extended tire life.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="slideshow" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-heading">Our Gallery</h2>
+            <div class="slideshow-container">
+
+                <img class="mySlides active" src="https://placehold.co/950x500/3182ce/ffffff?text=Image+1" alt="Gallery Image 1" onerror="this.src='https://placehold.co/950x500/3182ce/ffffff?text=Image+1+Load+Error';">
+                <img class="mySlides" src="https://placehold.co/950x500/4299e1/ffffff?text=Image+2" alt="Gallery Image 2" onerror="this.src='https://placehold.co/950x500/4299e1/ffffff?text=Image+2+Load+Error';">
+                <img class="mySlides" src="https://placehold.co/950x500/5a67d8/ffffff?text=Image+3" alt="Gallery Image 3" onerror="this.src='https://placehold.co/950x500/5a67d8/ffffff?text=Image+3+Load+Error';">
+                <img class="mySlides" src="https://placehold.co/950x500/667eea/ffffff?text=Image+4" alt="Gallery Image 4" onerror="this.src='https://placehold.co/950x500/667eea/ffffff?text=Image+4+Load+Error';">
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div class="dot-container">
+                <span class="dot active-dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-heading">Contact Us</h2>
             <div class="card p-8 max-w-2xl mx-auto contact-info">
                 <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 0 0 1 18 0z"></path>
                         <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     Enterprise Road, Nairobi Industrial Area, Kenya
                 </p>
                 <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
                         <path d="M22 16.92v3.08a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-3.71-3.71A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.18 2h3.08A2 2 0 0 1 9 3.46 15.94 15.94 0 0 0 12.54 7h.46a2 2 0 0 1 2 2v3.5a2 2 0 0 0 2 2h3.08a2 2 0 0 1 2 2z"></path>
                     </svg>
                     <a href="tel:+254718752172" class="hover:text-blue-600 transition duration-300">0718 752172</a>
                 </p>
                 <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
                         <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
                         <path d="M22 7L12 14 2 7"></path>
                     </svg>
@@ -405,6 +539,7 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const closeMobileMenuButton = document.getElementById('close-mobile-menu');
             const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            const mainNav = document.getElementById('main-nav');
 
             // Function to open the mobile menu
             function openMobileMenu() {
@@ -433,6 +568,15 @@
                 link.addEventListener('click', closeMobileMenu);
             });
 
+            // Add sticky effect to nav on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) { // Adjust scroll threshold as needed
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+            });
+
             // Intersection Observer for section headings
             const sectionHeadings = document.querySelectorAll('.section-heading');
             const observerOptions = {
@@ -446,6 +590,8 @@
                     if (entry.isIntersecting) {
                         entry.target.style.animation = 'fadeIn 1s ease-out forwards';
                         entry.target.style.opacity = '1';
+                        // Optional: Animate underline on heading entry
+                        entry.target.querySelector('::after') && (entry.target.querySelector('::after').style.transform = 'translateX(-50%) scaleX(1)');
                         observer.unobserve(entry.target); // Stop observing once animated
                     }
                 });
@@ -454,6 +600,63 @@
             sectionHeadings.forEach(heading => {
                 headingObserver.observe(heading);
             });
+
+            // Slideshow functionality
+            let slideIndex = 1;
+            let slideshowInterval; // Variable to hold the interval for autoplay
+
+            function showSlides(n) {
+                let i;
+                const slides = document.getElementsByClassName("mySlides");
+                const dots = document.getElementsByClassName("dot");
+
+                // Loop around if index goes out of bounds
+                if (n > slides.length) { slideIndex = 1; }
+                if (n < 1) { slideIndex = slides.length; }
+
+                // Hide all slides and remove active class from dots
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].classList.remove('active');
+                    slides[i].style.animation = ''; // Reset animation for next fade-in
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].classList.remove('active-dot');
+                }
+
+                // Display the current slide and mark the active dot
+                slides[slideIndex - 1].classList.add('active');
+                slides[slideIndex - 1].style.animation = 'fadeIn 1s ease-in-out forwards'; // Apply fade-in
+                dots[slideIndex - 1].classList.add('active-dot');
+            }
+
+            // Next/previous controls
+            window.plusSlides = function(n) {
+                showSlides(slideIndex += n);
+                resetAutoplay(); // Reset autoplay timer on manual navigation
+            }
+
+            // Thumbnail image controls
+            window.currentSlide = function(n) {
+                showSlides(slideIndex = n);
+                resetAutoplay(); // Reset autoplay timer on manual navigation
+            }
+
+            // Autoplay function
+            function startAutoplay() {
+                slideshowInterval = setInterval(() => {
+                    plusSlides(1);
+                }, 5000); // Change image every 5 seconds
+            }
+
+            // Reset autoplay timer
+            function resetAutoplay() {
+                clearInterval(slideshowInterval);
+                startAutoplay();
+            }
+
+            // Initialize slideshow and start autoplay
+            showSlides(slideIndex);
+            startAutoplay();
         });
     </script>
 </body>
