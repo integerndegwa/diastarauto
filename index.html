@@ -403,94 +403,44 @@
             transform: translateX(10px); /* More dramatic slide on hover */
         }
 
-        /* Slideshow specific styles (Radical Remake) */
-        .slideshow-container {
-            position: relative;
-            max-width: 1200px; /* Max Wider slideshow */
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 4rem; /* Max rounded */
-            box-shadow: 0 30px 70px rgba(0,0,0,0.55); /* Max Stronger shadow */
-            background-color: #fff;
-            border: 15px solid #ffffff; /* Max Thicker white frame effect */
-            box-sizing: content-box;
-            animation: fadeIn 2s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.9); /* Start slightly scaled down */
-            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2);
-        }
-        .slideshow-container:hover {
-            transform: scale(0.98); /* Slightly expand on hover */
+        /* Gallery specific styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+            gap: 2rem; /* Space between images */
         }
 
-        .mySlides {
-            display: none;
+        .gallery-item {
+            background-color: #ffffff;
+            border-radius: 2rem; /* Rounded corners for each image card */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25); /* Subtle shadow */
+            overflow: hidden; /* Ensures image corners are rounded */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.03); /* Lift and slightly scale on hover */
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4); /* More pronounced shadow on hover */
+        }
+
+        .gallery-item img {
             width: 100%;
-            height: 650px; /* Max Taller slides */
-            object-fit: cover;
-            animation: slideInFromRightFade 1.5s ease-in-out forwards; /* New custom animation */
-            filter: brightness(0.9); /* More darken for consistency */
-            transition: filter 0.4s ease;
-        }
-        .mySlides:hover {
-            filter: brightness(1.0); /* Restore brightness on hover */
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            border-radius: 2rem 2rem 0 0; /* Rounded top corners */
+            transition: filter 0.3s ease;
         }
 
-        @keyframes slideInFromRightFade {
-            0% { opacity: 0; transform: translateX(100%) scale(0.9); }
-            100% { opacity: 1; transform: translateX(0%) scale(1); }
+        .gallery-item:hover img {
+            filter: brightness(0.9); /* Slightly dim on hover */
         }
 
-        .mySlides.active {
-            display: block;
-        }
-
-        .prev, .next {
-            font-size: 40px; /* Max Larger arrows */
-            padding: 35px; /* Max Padding */
-            background-color: rgba(0,0,0,0.85); /* Max Darker background */
-            border-radius: 50%;
-            transition: background-color 0.6s ease, transform 0.6s ease, box-shadow 0.6s ease;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px; /* Max Fixed width for buttons */
-            height: 80px; /* Max Fixed height for buttons */
-            color: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6); /* Max Stronger shadow */
-            z-index: 10;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,1);
-            transform: translateY(-50%) scale(1.25); /* Max pronounced scale on hover */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-        }
-        .prev { left: 2.5rem; }
-        .next { right: 2.5rem; }
-
-        .dot-container {
-            padding: 40px; /* Max Padding */
-            background-color: #eaf2fb;
-            border-bottom-left-radius: 4rem; /* Match slideshow container */
-            border-bottom-right-radius: 4rem;
-            box-shadow: inset 0 12px 30px rgba(0,0,0,0.12); /* Max Deeper inner shadow */
-        }
-
-        .dot {
-            height: 25px; /* Max Larger dots */
-            width: 25px;
-            background-color: #a0aec0;
-            transition: background-color 0.7s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1.2);
-            border: 4px solid transparent; /* Max Thicker border */
-        }
-
-        .active-dot, .dot:hover {
-            background-color: #3182ce;
-            transform: scale(1.5); /* Max Larger on active/hover */
-            border-color: #4299e1;
-            box-shadow: 0 0 20px rgba(49, 130, 206, 1); /* Max Stronger glow effect */
+        .gallery-item-caption {
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4a5568;
+            text-align: center;
         }
 
         /* Responsive adjustments */
@@ -499,14 +449,15 @@
             .hero-section p { font-size: 2.5rem; }
             .section-heading { font-size: 4rem; }
             .hero-image-placeholder { height: 450px; }
-            .mySlides { height: 550px; }
+            .gallery-item img { height: 220px; }
         }
 
         @media (max-width: 768px) {
             .hero-section h1 { font-size: 4.5rem; }
             .hero-section p { font-size: 2rem; }
             .section-heading { font-size: 3.5rem; }
-            .mySlides { height: 400px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+            .gallery-item img { height: 180px; }
             .prev, .next { font-size: 28px; padding: 20px; width: 60px; height: 60px; }
             .card { padding: 3.5rem; }
             .card h3 { font-size: 2.2rem; }
@@ -520,7 +471,8 @@
             .hero-image-placeholder { height: 300px; }
             .hero-section a.inline-block { padding: 1.5rem 3rem; font-size: 1.1rem; }
             .section-heading { font-size: 2.8rem; }
-            .mySlides { height: 300px; }
+            .gallery-grid { grid-template-columns: 1fr; } /* Single column on very small screens */
+            .gallery-item img { height: 200px; }
             .prev, .next { font-size: 20px; padding: 15px; width: 45px; height: 45px; }
             .dot { height: 20px; width: 20px; }
             .card { padding: 3rem; }
@@ -537,7 +489,7 @@
             <div class="hidden lg:flex space-x-8">
                 <a href="#about" class="text-gray-600 hover:text-blue-600">About Us</a>
                 <a href="#services" class="text-gray-600 hover:text-blue-600">Our Services</a>
-                <a href="#slideshow" class="text-gray-600 hover:text-blue-600">Gallery</a>
+                <a href="#gallery" class="text-gray-600 hover:text-blue-600">Gallery</a>
                 <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact Us</a>
             </div>
 
@@ -556,7 +508,7 @@
             </button>
             <a href="#about" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">About Us</a>
             <a href="#services" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Our Services</a>
-            <a href="#slideshow" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Gallery</a>
+            <a href="#gallery" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Gallery</a>
             <a href="#contact" class="text-gray-800 hover:text-blue-600 text-xl font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Contact Us</a>
         </div>
     </nav>
@@ -572,7 +524,7 @@
             <div class="hero-image-placeholder">
                 <!-- IMPORTANT: Replace this 'src' with YOUR OWN PUBLIC HERO IMAGE URL (e.g., a .jpg or .png).
                      Example: src="https://yourwebsite.com/images/hero-car.jpg" -->
-                <img src="https://placehold.co/1200x500/4299e1/ffffff?text=YOUR+HERO+IMAGE" alt="Diastar Auto Care Hero Image" onerror="this.src='https://placehold.co/1200x500/FF0000/ffffff?text=HERO+IMAGE+FAILED+TO+LOAD!+Provide+Public+URL'; console.error('Hero image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                <img src="diastar.jpg" alt="Diastar Auto Care Hero Image" onerror="this.src='https://placehold.co/1200x500/FF0000/ffffff?text=HERO+IMAGE+FAILED+TO+LOAD!+Provide+Public+URL'; console.error('Hero image failed to load. Please ensure the URL is correct and publicly accessible.');">
             </div>
             <a href="#contact" class="inline-block text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transition duration-300 ease-in-out transform">
                 Get in Touch Today
@@ -658,34 +610,48 @@
         </div>
     </section>
 
-    <section id="slideshow" class="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+    <section id="gallery" class="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23FFFFFF" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 18v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 14v-4H10v4H6v2h4v4h2v-4h4v-2h-4zm0 18v-4H10v4H6v2h4v4h2v-4h4v-2h-4zM12 0v-4H10v4H6v2h4v4h2V6h4V4h-4zm24 0v-4h-2v4h-4v2h4v4h2V6h4V4h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); background-size: 60px 60px; animation: backgroundPan 180s linear infinite reverse;"></div>
         <div class="max-w-7xl mx-auto relative z-10 text-white">
             <h2 class="section-heading text-white mb-16">Our Gallery</h2>
-            <div class="slideshow-container relative w-full mx-auto" style="transform-style: preserve-3d; perspective: 1000px;">
-
-                <!-- SLIDES: IMPORTANT! Replace the 'src' attribute with YOUR OWN PUBLIC JPEG IMAGE URLs.
-                     For example: src="https://yourwebsite.com/images/my-car-repair-1.jpg"
+            <div class="gallery-grid">
+                <!-- GALLERY IMAGES: IMPORTANT! Replace the 'src' attribute with YOUR OWN PUBLIC JPEG IMAGE URLs.
+                     Add as many <div> blocks as you have images.
+                     Example: <img src="https://yourwebsite.com/images/my-car-repair-1.jpg" ...>
                      Local file paths (e.g., C:/Users/YourName/Pictures/my-car.jpeg) will NOT work here.
                      You need to host your images online (e.g., Imgur, Cloudinary, or your own web server). -->
-                <img class="mySlides active absolute top-0 left-0 w-full h-full object-cover rounded-3xl shadow-xl transition-all duration-1000 ease-in-out" src="slide1.png" alt="Gallery Image 1" onerror="this.src='https://placehold.co/1200x650/FF0000/ffffff?text=Image+1+FAILED+TO+LOAD!+Provide+Public+URL'; console.error('Image 1 failed to load. Please ensure the URL is correct and publicly accessible (e.g., a .jpg or .png file).');">
-                <img class="mySlides absolute top-0 left-0 w-full h-full object-cover rounded-3xl shadow-xl transition-all duration-1000 ease-in-out" src="https://placehold.co/1200x650/4299e1/ffffff?text=YOUR+IMAGE+2" alt="Gallery Image 2" onerror="this.src='https://placehold.co/1200x650/FF0000/ffffff?text=Image+2+FAILED+TO+LOAD!+Provide+Public+URL'; console.error('Image 2 failed to load. Please ensure the URL is correct and publicly accessible (e.g., a .jpg or .png file).');">
-                <img class="mySlides absolute top-0 left-0 w-full h-full object-cover rounded-3xl shadow-xl transition-all duration-1000 ease-in-out" src="https://placehold.co/1200x650/5a67d8/ffffff?text=YOUR+IMAGE+3" alt="Gallery Image 3" onerror="this.src='https://placehold.co/1200x650/FF0000/ffffff?text=Image+3+FAILED+TO+LOAD!+Provide+Public+URL'; console.error('Image 3 failed to load. Please ensure the URL is correct and publicly accessible (e.g., a .jpg or .png file).');">
-                <img class="mySlides absolute top-0 left-0 w-full h-full object-cover rounded-3xl shadow-xl transition-all duration-1000 ease-in-out" src="https://placehold.co/1200x650/667eea/ffffff?text=YOUR+IMAGE+4" alt="Gallery Image 4" onerror="this.src='https://placehold.co/1200x650/FF0000/ffffff?text=Image+4+FAILED+TO+LOAD!+Provide+Public+URL'; console.error('Image 4 failed to load. Please ensure the URL is correct and publicly accessible (e.g., a .jpg or .png file).');">
 
-                <a class="prev absolute top-1/2 left-8 -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-90 text-white p-6 rounded-full text-4xl leading-none flex items-center justify-center w-20 h-20 transition-all duration-300 ease-in-out shadow-lg transform hover:scale-110" onclick="plusSlides(-1)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                </a>
-                <a class="next absolute top-1/2 right-8 -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-90 text-white p-6 rounded-full text-4xl leading-none flex items-center justify-center w-20 h-20 transition-all duration-300 ease-in-out shadow-lg transform hover:scale-110" onclick="plusSlides(1)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </a>
-            </div>
-            <div class="dot-container flex justify-center space-x-4 mt-12">
-                <span class="dot w-6 h-6 bg-gray-300 rounded-full cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-125" onclick="currentSlide(1)"></span>
-                <span class="dot w-6 h-6 bg-gray-300 rounded-full cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-125" onclick="currentSlide(2)"></span>
-                <span class="dot w-6 h-6 bg-gray-300 rounded-full cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-125" onclick="currentSlide(3)"></span>
-                <span class="dot w-6 h-6 bg-gray-300 rounded-full cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-125" onclick="currentSlide(4)"></span>
-            </div>
+                <div class="gallery-item">
+                    <img src="slide1.png" alt="Car Service 1" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Engine Diagnostics</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="slide2.jpeg" alt="Car Repair 2" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Brake Inspection</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="slide3.jpeg" alt="Workshop View 3" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Tire Change</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="slide4.jpeg" alt="Detailing Work 4" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Oil Change Service</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/3182ce/ffffff?text=Alignment+5" alt="Alignment 5" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Wheel Alignment</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/4299e1/ffffff?text=Happy+Customer+6" alt="Happy Customer 6" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">AC Repair</div>
+                </div>
+
+                </div>
         </div>
     </section>
 
@@ -802,66 +768,7 @@
                 elementObserver.observe(element);
             });
 
-            // Slideshow functionality (Radical Remake)
-            let slideIndex = 1;
-            let slideshowInterval; // Variable to hold the interval for autoplay
-
-            function showSlides(n) {
-                let i;
-                const slides = document.getElementsByClassName("mySlides");
-                const dots = document.getElementsByClassName("dot");
-
-                // Loop around if index goes out of bounds
-                if (n > slides.length) { slideIndex = 1; }
-                if (n < 1) { slideIndex = slides.length; }
-
-                // Hide all slides and remove active class from dots
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].classList.remove('active');
-                    slides[i].style.animation = ''; // Reset animation for next fade-in
-                    slides[i].style.zIndex = 1; // Reset z-index
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].classList.remove('active-dot');
-                }
-
-                // Display the current slide and mark the active dot
-                slides[slideIndex - 1].classList.add('active');
-                slides[slideIndex - 1].style.animation = 'slideInFromRightFade 1.5s ease-in-out forwards'; // Apply new custom animation
-                slides[slideIndex - 1].style.zIndex = 2; // Bring active slide to front
-                dots[slideIndex - 1].classList.add('active-dot');
-
-                console.log(`Showing slide: ${slideIndex}`); // Console log for debugging
-            }
-
-            // Next/previous controls
-            window.plusSlides = function(n) {
-                showSlides(slideIndex += n);
-                resetAutoplay(); // Reset autoplay timer on manual navigation
-            }
-
-            // Thumbnail image controls
-            window.currentSlide = function(n) {
-                showSlides(slideIndex = n);
-                resetAutoplay(); // Reset autoplay timer on manual navigation
-            }
-
-            // Autoplay function
-            function startAutoplay() {
-                slideshowInterval = setInterval(() => {
-                    plusSlides(1);
-                }, 6000); // Change image every 6 seconds
-            }
-
-            // Reset autoplay timer
-            function resetAutoplay() {
-                clearInterval(slideshowInterval);
-                startAutoplay();
-            }
-
-            // Initialize slideshow and start autoplay
-            showSlides(slideIndex);
-            startAutoplay();
+            // Removed all previous slideshow-specific JavaScript as it's no longer needed.
         });
     </script>
 </body>
