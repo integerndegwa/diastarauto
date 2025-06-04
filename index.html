@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5; /* Light gray background */
+            background-color: #ffffff; /* Changed to white */
             position: relative;
             overflow-x: hidden; /* Prevent horizontal scroll from animations */
             perspective: 1200px; /* Stronger 3D perspective for elements */
@@ -23,7 +23,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.06"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 18v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 14v-4H10v4H6v2h4v4h2v-4h4v-2h-4zm0 18v-4H10v4H6v2h4v4h2v-4h4v-2h-4zM12 0v-4H10v4H6v2h4v4h2V6h4V4h-4zm24 0v-4h-2v4h-4v2h4v4h2V6h4V4h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            /* Changed SVG fill color to a very light grey for a subtle white sliding effect */
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23E0E0E0" fill-opacity="0.06"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 18v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 14v-4H10v4H6v2h4v4h2v-4h4v-2h-4zm0 18v-4H10v4H6v2h4v4h2v-4h4v-2h-4zM12 0v-4H10v4H6v2h4v4h2V6h4V4h-4zm24 0v-4h-2v4h-4v2h4v4h2V6h4V4h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
             background-size: 60px 60px;
             background-repeat: repeat;
             z-index: -1; /* Send to back */
@@ -126,7 +127,8 @@
 
         /* Hero Section Styling */
         .hero-section {
-            background: linear-gradient(160deg, #1a202c 0%, #2d3748 30%, #4a5568 70%, #667eea 100%); /* Even more complex gradient */
+            /* Changed to a deep indigo gradient */
+            background: linear-gradient(160deg, #283593 0%, #3949AB 30%, #424242 70%, #607D8B 100%);
             color: white;
             padding: 10rem 1rem; /* Max vertical padding */
             text-align: center;
@@ -532,7 +534,7 @@
         </div>
     </section>
 
-    <section id="about" class="py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="about" class="py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-heading">About Us</h2>
             <div class="card p-8 text-center max-w-4xl mx-auto">
@@ -622,44 +624,60 @@
                      You need to host your images online (e.g., Imgur, Cloudinary, or your own web server). -->
 
                 <div class="gallery-item">
-                    <img src="slide5.jpg" alt="" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
-                    <div class="gallery-item-caption"></div>
+                    <img src="heavydirtcar.png" alt="Car Service 1" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Heavy Dirt Car</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="slide2.jpeg" alt="" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
-                    <div class="gallery-item-caption"></div>
+                    <img src="ineosgrenadier.jpg" alt="Car Repair 2" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Ineos Grenadier</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="slide3.jpeg" alt="" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
-                    <div class="gallery-item-caption"></div>
+                    <img src="vwb4.jpg" alt="Workshop View 3" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">VW Classic Before and After Restoration</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="slide4.jpeg" alt="" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
-                    <div class="gallery-item-caption"></div>
+                    <img src="classickahfront.jpg" alt="Detailing Work 4" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Classic KAH Restored Front</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="slide6.jpg" alt="" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
-                    <div class="gallery-item-caption"></div>
+                    <img src="classickahback.jpg" alt="Alignment 5" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Classic KAH Restored Back</div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="slide7.jpg" alt="" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
-                    <div class="gallery-item-caption"></div>
+                    <img src="classickntback.jpg" alt="Happy Customer 6" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Classic KNT Restored Back</div>
                 </div>
-                  <div class="gallery-item">
-                    <img src="slide8.jpg" alt="" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
-                    <div class="gallery-item-caption"></div>
+                <div class="gallery-item">
+                    <img src="classickntfront.jpg" alt="Happy Customer 6" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Classic KNT Restored Front</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="classickgffront.jpg" alt="Happy Customer 6" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Classic KGF Restored Front</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="classickgfside.jpg" alt="Happy Customer 6" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">Classic KGF Restored Side</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="vwyellowbefore.jpg" alt="Happy Customer 6" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">VW Classic Yellow Before Restoration</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="vwyellowafter.jpg" alt="Happy Customer 6" onerror="this.src='https://placehold.co/400x250/FF0000/ffffff?text=Image+Failed+to+Load!'; console.error('Gallery image failed to load. Please ensure the URL is correct and publicly accessible.');">
+                    <div class="gallery-item-caption">VW Classic Yellow After Restoration</div>
                 </div>
 
                 </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id="contact" class="py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-heading">Contact Us</h2>
             <div class="card p-8 max-w-2xl mx-auto contact-info">
@@ -771,8 +789,6 @@
             elementsToAnimate.forEach(element => {
                 elementObserver.observe(element);
             });
-
-            // Removed all previous slideshow-specific JavaScript as it's no longer needed.
         });
     </script>
 </body>
